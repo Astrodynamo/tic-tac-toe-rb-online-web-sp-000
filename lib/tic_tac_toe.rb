@@ -84,4 +84,8 @@ end
 def winner (board)
   return board[won?(board)[1]] if won?(board)
 end
+
+def play
+  
+end
   
