@@ -46,5 +46,13 @@ def turn(board) # need to refactor for character in #move
   end
 end
 
+def turn_count (board)
+  
+end
+
+def current_player
+  
+end
+
 
   
