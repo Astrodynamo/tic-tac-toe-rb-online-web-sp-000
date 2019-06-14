@@ -85,7 +85,8 @@ def winner (board)
   return board[won?(board)[1]] if won?(board)
 end
 
-def play
-  
+def play(board)
+  turn(board) until over?(board)
+  won?(board) ? puts "Congratulations #{winner(board)}!": puts "Cat's Game!"
 end
   
