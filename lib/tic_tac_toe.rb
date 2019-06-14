@@ -1,3 +1,4 @@
+# State methods
 WIN_COMBINATIONS = [
     [0,1,2], # Top row
     [3,4,5], # Middle row
@@ -17,6 +18,7 @@ def display_board(board)
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
 
+# Turn methods
 def input_to_index(input)
   return input.to_i - 1
 end
@@ -58,5 +60,28 @@ def current_player (board)
   turn_count(board).even? ? "X" : "O"
 end
 
+# End game methods
+def won? (board)
+  WIN_COMBINATIONS.detect do |win_combination|
+    board.values_at(win_combination[0], win_combination[1], win_combination[2]) == ["X", "X", "X"] || board.values_at(win_combination[0], win_combination[1], win_combination[2]) == ["O", "O", "O"]
+  end
+end
 
+def full? (board)
+  !board.find {|position| position == " "}
+end
+
+def draw? (board)
+  return true if !won?(board) && full?(board)
+  false
+end
+
+def over? (board)
+  return true if won?(board) || draw?(board) || full?(board)
+  false
+end
+
+def winner (board)
+  return board[won?(board)[1]] if won?(board)
+end
   
